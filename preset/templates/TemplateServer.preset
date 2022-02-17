@@ -1,0 +1,29 @@
+##########
+# Windows Server 2016 / Server 2019 / Server 2022 Initial Setup Script - Preset template
+# Author: Disassembler <disassembler@dasm.cz>
+# Maintainer: Pontus Öwre <pontus@owre.se>, DevGrx
+# Version: v3.2, 2021-10-28
+# Source: https://github.com/Disassembler0/Win10-Initial-Setup-Script (original), https://github.com/owre/Win10-Initial-Setup-Script
+##########
+
+### Require Administrator privileges ###
+# RequireAdmin
+
+### Bonus Tweaks ###
+# SplitSvcHostThreshold
+
+### Server Specific Tweaks ###
+# HideServerManagerOnLogin      # ShowServerManagerOnLogin
+# DisableShutdownTracker        # EnableShutdownTracker
+# DisablePasswordPolicy         # EnablePasswordPolicy
+# DisableCtrlAltDelLogin        # EnableCtrlAltDelLogin
+# DisableIEEnhancedSecurity     # EnableIEEnhancedSecurity
+# EnableAudio                   # DisableAudio
+
+### Unpinning ###
+# UnpinStartMenuTiles
+# UnpinTaskbarIcons
+
+### Auxiliary Functions ###
+# WaitForKey
+# Restart

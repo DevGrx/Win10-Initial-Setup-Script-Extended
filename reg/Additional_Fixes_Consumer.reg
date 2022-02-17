@@ -1,0 +1,432 @@
+Windows Registry Editor Version 5.00
+
+; Additional Registry Fixes (Windows 10, version 1803 and later - Consumer editions)
+
+;; Privacy Tweaks
+
+; Advertising
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SoftLandingEnabled"=dword:00000000
+"RotatingLockScreenEnabled"=dword:00000000
+"RotatingLockScreenOverlayEnabled"=dword:00000000
+
+; Advertising ID for relevant Ads
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+"Enabled"=dword:00000000
+
+; Disable Automatically Installing Featured or Suggested Apps
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SilentInstalledAppsEnabled"=dword:00000000
+
+; Telemetry
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoInstrumentation"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoInstrumentation"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports]
+"PreventHandwritingErrorReports"=dword:00000001
+
+; Cortana
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"AllowCortanaAboveLock"=dword:00000000
+"AllowSearchToUseLocation"=dword:00000000
+"ConnectedSearchUseWebOverMeteredConnections"=dword:00000000
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
+"AllowSearchToUseLocation"=dword:00000000
+"DeviceHistoryEnabled"=dword:00000000
+"HistoryViewEnabled"=dword:00000000
+
+; Disable App Launch Tracking
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
+"DisableMFUTracking"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
+"DisableMFUTracking"=dword:00000001
+
+; Disable Consumer Experiences
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsConsumerFeatures"=dword:00000001
+
+; Disable Settings synchronization
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync]
+"BackupPolicy"=dword:0000003c
+"DeviceMetadataUploaded"=dword:00000000
+"SettingsVersion"=dword:00000001
+"PriorLogons"=dword:00000001
+
+; Disable Password reveal Button
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CredUI]
+"DisablePasswordReveal"=dword:00000001
+
+;; Security Tweaks
+
+; Disable Mitigations
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"FeatureSettings"=dword:00000000
+"FeatureSettingsOverride"=dword:00000003
+"FeatureSettingsOverrideMask"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel]
+"DisableTsx"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization]
+-"MinVmVersionForCpuBasedMitigations"="1.0"
+
+;; Network Tweaks
+
+; Lanman Server improvements
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
+"IRPStackSize"=dword:00000032
+"SizReqBuf"=dword:00017424
+
+; TCP-IP Protocol improvements
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+"DefaultTTL"=dword:00000064
+"Tcp1323Ports"=dword:00000001
+"MaxFreeTcbs"=dword:00065536
+"MaxUserPort"=dword:00065534
+"GlobalMaxTcpWindowSize"=dword:00065535
+
+; System responsiveness improvement & Network speed
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
+"SystemResponsiveness"=dword:0000000a
+"NetworkThrottlingIndex"="fffffff"
+
+; Remove Default limit for QoS
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched]
+"NonBestEffortLimit"=dword:00000000
+
+;; Service Tweaks
+
+; Disable Hibernation by default
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
+"HibernateEnabledDefault"=dword:00000000
+
+; Disable updating Date Accessed on files
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]
+"NtfsDisableLastAccessUpdate"=dword:80000001
+
+; Improve Startup speed
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
+"StartupDelayInMSec"=dword:00000000
+
+; RAM & System Usage management
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"HungAppTimeOut"="1000"
+"AutoEndTasks"="1"
+"MenuShowDelay"="400"
+"WaitToKillAppTimeout"="1000"
+"WaitToKillServiceTimeout"="1000"
+"LowLevelHooksTimeout"="1000"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+"WaitToKillServiceTimeout"="1000"
+
+; Disable Automatic Maintenance
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
+"MaintenanceDisabled"=dword:00000001
+
+; Turn off Auto Adjust Active Hours
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
+"SmartActiveHoursState"=dword:00000002
+
+;; UI Tweaks
+
+; Enable Screen savers
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop]
+"ScreenSaveActive"=-
+
+; Print Screen Sound - notify.wav
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\SnapShot]
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\SnapShot\.current]
+@="C:\\WINDOWS\\media\\notify.wav"
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\SnapShot\.Modified]
+@="C:\\WINDOWS\\media\\notify.wav"
+
+; OLED Taskbar transparency level
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"UseOLEDTaskbarTransparency"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm]
+"ForceEffectMode"=dword:00000001
+
+; Add Lock Screen Timeout setting to Power Options
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\7516b95f-f776-4464-8c53-06167f40cc99\8EC4B3A5-6868-48c2-BE75-4F3044BE88A7]
+"Attributes"=dword:00000002
+
+; Alt+Tab appearance
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]
+"Grid_backgroundPercent"=dword:00000100
+"BackgroundDimmingLayer_Percent"=dword:00000050
+
+; Improve Wallpaper quality
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"JPEGImportQuality"=dword:00000064
+
+;; Explorer UI Tweaks
+
+; Hide OneDrive from File Explorer
+
+[HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+
+[HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+
+; Hide Mixed Reality in Settings
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Holographic]
+"FirstRunSucceeded"=dword:00000000
+
+; Hide Windows Insider Program Page in Settings
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility]
+"HideInsiderPage"=dword:00000001
+
+; Remove Shortcut text
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"link"=hex:00,00,00,00
+
+; Change Icon Cache size
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"Max Cached Icons"="4096"
+
+;; Application Tweaks
+
+; Take Ownership
+
+[HKEY_CLASSES_ROOT\*\shell\runas]
+@="Take Ownership"
+"NoWorkingDirectory"=""
+
+[HKEY_CLASSES_ROOT\*\shell\runas\command]
+@="cmd.exe /c takeown /f \"%1\" && icacls \"%1\" /grant administrators:F"
+"IsolatedCommand"="cmd.exe /c takeown /f \"%1\" && icacls \"%1\" /grant administrators:F"
+
+[HKEY_CLASSES_ROOT\Directory\shell\runas]
+@="Take Ownership"
+"NoWorkingDirectory"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
+@="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
+"IsolatedCommand"="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
+
+; Restore Windows Photo Viewer
+
+[HKEY_CLASSES_ROOT\Applications\photoviewer.dll]
+
+[HKEY_CLASSES_ROOT\Applications\photoviewer.dll\shell]
+
+[HKEY_CLASSES_ROOT\Applications\photoviewer.dll\shell\open]
+"MuiVerb"="@photoviewer.dll,-3043"
+
+[HKEY_CLASSES_ROOT\Applications\photoviewer.dll\shell\open\command]
+@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
+00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,72,00,75,00,\
+6e,00,64,00,6c,00,6c,00,33,00,32,00,2e,00,65,00,78,00,65,00,20,00,22,00,25,\
+00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,00,73,00,\
+25,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,50,00,68,00,6f,\
+00,74,00,6f,00,20,00,56,00,69,00,65,00,77,00,65,00,72,00,5c,00,50,00,68,00,\
+6f,00,74,00,6f,00,56,00,69,00,65,00,77,00,65,00,72,00,2e,00,64,00,6c,00,6c,\
+00,22,00,2c,00,20,00,49,00,6d,00,61,00,67,00,65,00,56,00,69,00,65,00,77,00,\
+5f,00,46,00,75,00,6c,00,6c,00,73,00,63,00,72,00,65,00,65,00,6e,00,20,00,25,\
+00,31,00,00,00
+
+[HKEY_CLASSES_ROOT\Applications\photoviewer.dll\shell\open\DropTarget]
+"CLSID"="{FFE2A43C-56B9-4bf5-9A79-CC6D4285608A}"
+
+[HKEY_CLASSES_ROOT\Applications\photoviewer.dll\shell\print]
+
+[HKEY_CLASSES_ROOT\Applications\photoviewer.dll\shell\print\command]
+@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
+00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,72,00,75,00,\
+6e,00,64,00,6c,00,6c,00,33,00,32,00,2e,00,65,00,78,00,65,00,20,00,22,00,25,\
+00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,00,73,00,\
+25,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,50,00,68,00,6f,\
+00,74,00,6f,00,20,00,56,00,69,00,65,00,77,00,65,00,72,00,5c,00,50,00,68,00,\
+6f,00,74,00,6f,00,56,00,69,00,65,00,77,00,65,00,72,00,2e,00,64,00,6c,00,6c,\
+00,22,00,2c,00,20,00,49,00,6d,00,61,00,67,00,65,00,56,00,69,00,65,00,77,00,\
+5f,00,46,00,75,00,6c,00,6c,00,73,00,63,00,72,00,65,00,65,00,6e,00,20,00,25,\
+00,31,00,00,00
+
+[HKEY_CLASSES_ROOT\Applications\photoviewer.dll\shell\print\DropTarget]
+"CLSID"="{60fd46de-f830-4894-a628-6fa81bc0190d}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]
+".tif"="PhotoViewer.FileAssoc.Tiff"
+".tiff"="PhotoViewer.FileAssoc.Tiff"
+".png"="PhotoViewer.FileAssoc.Tiff"
+".bmp"="PhotoViewer.FileAssoc.Tiff"
+".jpeg"="PhotoViewer.FileAssoc.Tiff"
+".jpg"="PhotoViewer.FileAssoc.Tiff"
+".ico"="PhotoViewer.FileAssoc.Tiff"
+
+; Let Windows manage My Default Printer
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
+"LegacyDefaultPrinterMode"=dword:00000000
+
+;; Context Menu Tweaks
+
+; Add Copy To on right-click
+
+[HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Copy To]
+@="{C2FBB630-2971-11D1-A18C-00C04FD75D13}"
+
+; Add Move To on right-click
+
+[HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Move To]
+@="{C2FBB631-2971-11D1-A18C-00C04FD75D13}"
+
+;; Control Panel Tweaks
+
+; Fix DPI scaling
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"Win8DpiScaling"=dword:00000000
+"DpiScalingVer"=dword:00001000
+"LogPixels"=dword:00000096
+
+; Turn on Visual Feedback
+
+[HKEY_CURRENT_USER\Control Panel\Cursors]
+"ContactVisualization"=dword:00000001
+"GestureVisualization"=dword:0000001f
+
+; Add Windows Update to Control Panel
+
+[HKEY_CLASSES_ROOT\CLSID\{36eef7db-88ad-4e81-ad49-0e313f0c35f8}]
+@="@%SystemRoot%\\system32\\shell32.dll,-22068"
+"InfoTip"="@%SystemRoot%\\system32\\shell32.dll,-22580"
+"System.ApplicationName"="Microsoft.WindowsUpdate"
+"System.ControlPanel.Category"="5,10"
+"System.SOFTWARE.TasksFileUrl"="Internal"
+
+[HKEY_CLASSES_ROOT\CLSID\{36eef7db-88ad-4e81-ad49-0e313f0c35f8}\DefaultIcon]
+@="%SystemRoot%\\shell32.dll,-47"
+
+[HKEY_CLASSES_ROOT\CLSID\{36eef7db-88ad-4e81-ad49-0e313f0c35f8}\Shell\Open\command]
+@="control /name Microsoft.WindowsUpdate"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel\NameSpace\{36eef7db-88ad-4e81-ad49-0e313f0c35f8}]
+@="Windows Update"
+
+;; Gaming Tweaks
+
+; Turn On Game Mode
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar]
+"AllowAutoGameMode"=dword:00000001
+
+; Turn Off Power Throttling
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling]
+"PowerThrottlingOff"=dword:00000001
+
+; Turn Off Game Bar Capture
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
+"AppCaptureEnabled"=dword:000000000
+
+; Improvements in Gaming & Disable Fullscreen optimization and GameDVR
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]
+"value"="00000000"
+
+[HKEY_CURRENT_USER\System\GameConfigStore]
+"GameDVR_EFSEFeatureFlags"=dword:00000000
+"Win32_AutoGameModeDefaultProfile"=hex:01,00,01,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00
+"Win32_GameModeRelatedProcesses"=hex:01,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00,00,00,00,00
+
+; Ability to modify sleeping CPU cores
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\943c8cb6-6f93-4227-ad87-e9a3feec08d1]
+"Attributes"="2"
+
+; Improve GPU & Gaming Performance
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games]
+"Affinity"=dword:00000000
+"Background Only"="False"
+"Clock Rate"=dword:00002710
+"GPU Priority"=dword:00000008
+"Priority"=dword:00000006
+"Scheduling Category"="High"
+"SFIO Priority"="High"
+
+; Disable Mouse smoothing & Acceleration
+
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseSensitivity"="10"
+"SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,c0,cc,0c,00,00,00,00,00,80,99,\
+  19,00,00,00,00,00,40,66,26,00,00,00,00,00,00,33,33,00,00,00,00,00
+"SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,38,00,00,00,00,00,00,00,\
+  70,00,00,00,00,00,00,00,a8,00,00,00,00,00,00,00,e0,00,00,00,00,00
+	
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"UserPreferencesMask"=hex:9e,1e,06,80,12,00,00,00
+
+[HKEY_USERS\.DEFAULT\Control Panel\Mouse]
+"MouseSpeed"="0"
+"MouseThreshold1"="0"
+"MouseThreshold2"="0"
